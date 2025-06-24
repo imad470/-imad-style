@@ -3,81 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Commander - Imad Style</title>
+  <title>Commande - Imad Style</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
-    form { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
-    label { display: block; margin-top: 15px; }
-    input, select { width: 100%; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px; width: 100%; background: #0070f3; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
-    button:hover { background: #005bb5; }
-    .paypal-btn { background: #003087; }
-    .success { background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: center; }
-    .error { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: center; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    form { max-width: 400px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, select, button { width: 100%; padding: 10px; margin-top: 5px; }
+    button { background-color: #28a745; color: white; border: none; cursor: pointer; font-size: 16px; margin-top: 20px; }
+    button:hover { background-color: #218838; }
   </style>
 </head>
 <body>
+  <h1>Formulaire de commande</h1>
 
-<h2>Commander un produit - Imad Style</h2>
+  <form id="form-commande">
+    <label for="produit">Produit</label>
+    <select id="produit" name="produit" required>
+      <option value="">-- Sélectionnez un produit --</option>
+      <option value="Ensemble Chemise + pantalon homme">Ensemble Chemise + pantalon homme</option>
+      <option value="Costume velours côtelé décontracté">Costume velours côtelé décontracté</option>
+      <option value="Mia Muse – Robe de soirée élégante">Mia Muse – Robe de soirée élégante</option>
+      <option value="FITTOO – Robe à bretelles minceur">FITTOO – Robe à bretelles minceur</option>
+      <option value="Outil de retrait de cire d'oreille visuel intelligent">Outil de retrait de cire d'oreille visuel intelligent</option>
+    </select>
 
-<form id="orderForm">
-  <label for="nom">Nom complet</label>
-  <input type="text" id="nom" name="nom" required />
+    <label for="quantite">Quantité</label>
+    <input type="number" id="quantite" name="quantite" value="1" min="1" required />
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required />
+    <button type="submit">Commander</button>
+  </form>
 
-  <label for="telephone">Téléphone</label>
-  <input type="tel" id="telephone" name="telephone" required />
-
-  <label for="adresse">Adresse complète</label>
-  <input type="text" id="adresse" name="adresse" required />
-
-  <label for="produit">Choisir un produit</label>
-  <select id="produit" name="produit" required>
-    <option value="">-- Sélectionnez --</option>
-    <option value="robe_de_soiree">Robe de soirée - 10€</option>
-    <option value="outil_cire_oreille">Outil de retrait de cire d'oreille - 10€</option>
-    <option value="ensemble_homme">Ensemble chemise + pantalon homme - 10€</option>
-    <option value="costume_velours">Costume velours côtelé - 10€</option>
-    <option value="robe_bretelles">Robe à bretelles minceur - 10€</option>
-  </select>
-
-  <button type="submit">Payer par Carte (Stripe)</button>
-</form>
-
-<button id="paypalBtn" class="paypal-btn">Payer par PayPal</button>
-
-<div id="message"></div>
-
-<script>
-  const form = document.getElementById('orderForm');
-  const messageDiv = document.getElementById('message');
-  const paypalBtn = document.getElementById('paypalBtn');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    messageDiv.innerHTML = '';
-
-    const nom = form.nom.value.trim();
-    const email = form.email.value.trim();
-    const telephone = form.telephone.value.trim();
-    const adresse = form.adresse.value.trim();
-    const produit = form.produit.value;
-
-    if (!nom || !email || !telephone || !adresse || !produit) {
-      messageDiv.innerHTML = '<div class="error">Veuillez remplir tous les champs.</div>';
-      return;
-    }
-
-    messageDiv.innerHTML = '<div class="success">Commande reçue ! (Paiement Stripe simulé)</div>';
-    form.reset();
-  });
-
-  paypalBtn.addEventListener('click', () => {
-    window.location.href = 'https://www.paypal.com/paypalme/TON_COMPTE/10'; // Mets ici ton lien PayPal exact
-  });
-</script>
-
+  <script src="commande.js"></script>
 </body>
 </html>
