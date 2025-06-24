@@ -14,79 +14,79 @@
         <li><a href="#homme">Homme</a></li>
         <li><a href="#femme">Femme</a></li>
         <li><a href="#accessoires">Accessoires</a></li>
-        <li><a href="#commande">Commander</a></li>
       </ul>
     </nav>
   </header>
 
   <section id="homme">
     <h2>Produits Homme</h2>
-    <div class="product">
+    <!-- Exemple produit homme -->
+    <div class="product" data-id="1">
       <h3>Ensemble Chemise + pantalon homme</h3>
       <img src="https://ae01.alicdn.com/kf/H260830bd9ac34e469fbbe3d09917c988t.jpg" alt="Ensemble Chemise + pantalon homme" />
       <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn">Commander</button>
     </div>
-    <div class="product">
+
+    <div class="product" data-id="2">
       <h3>Costume velours côtelé décontracté</h3>
       <img src="https://ae01.alicdn.com/kf/H94e0d331c824414091d2b0b60c5c29f6E.jpg" alt="Costume velours côtelé" />
       <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn">Commander</button>
     </div>
   </section>
 
   <section id="femme">
     <h2>Produits Femme</h2>
-    <div class="product">
+
+    <div class="product" data-id="3">
       <h3>Mia Muse – Robe de soirée élégante</h3>
       <img src="https://ae01.alicdn.com/kf/Ha580cc76d0224fbc9b953a5a156fedb4P.jpg" alt="Robe de soirée Mia Muse" />
       <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn">Commander</button>
     </div>
-    <div class="product">
+
+    <div class="product" data-id="4">
       <h3>FITTOO – Robe à bretelles minceur</h3>
       <img src="https://ae01.alicdn.com/kf/H0733ffba51564b228138a44d0dd9c519J.jpg" alt="Robe FITTOO minceur" />
       <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn">Commander</button>
     </div>
   </section>
 
   <section id="accessoires">
     <h2>Accessoires</h2>
-    <div class="product">
+
+    <div class="product" data-id="5">
       <h3>Outil de retrait de cire d'oreille visuel intelligent</h3>
       <img src="https://ae01.alicdn.com/kf/Hd0e52a8e524941fc998b343bc39a01dcN.jpg" alt="Outil de retrait de cire d'oreille" />
       <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn">Commander</button>
     </div>
   </section>
 
-  <!-- Formulaire de commande -->
-  <section id="commande" style="padding:20px; background:#f4f4f4; margin-top:40px;">
-    <h2>Passer une commande</h2>
-    <form id="form-commande">
-      <label for="produit">Produit :</label><br/>
-      <select id="produit" name="produit" required>
-        <option value="">-- Choisissez un produit --</option>
-        <option value="chemise-pantalon">Ensemble Chemise + pantalon homme</option>
-        <option value="costume-velours">Costume velours côtelé décontracté</option>
-        <option value="robe-mia">Mia Muse – Robe de soirée élégante</option>
-        <option value="robe-fitto">FITTOO – Robe à bretelles minceur</option>
-        <option value="outil-oreille">Outil de retrait de cire d'oreille visuel</option>
-      </select><br/><br/>
-
-      <label for="nom">Nom complet :</label><br/>
-      <input type="text" id="nom" name="nom" required /><br/><br/>
-
-      <label for="email">Email :</label><br/>
-      <input type="email" id="email" name="email" required /><br/><br/>
-
-      <label for="adresse">Adresse de livraison :</label><br/>
-      <textarea id="adresse" name="adresse" required></textarea><br/><br/>
-
-      <button type="submit">Commander - 10€</button>
+  <!-- Formulaire de commande caché -->
+  <div id="order-form-container" class="hidden">
+    <form id="order-form">
+      <h2>Formulaire de commande</h2>
+      <input type="hidden" id="product-id" name="product-id" />
+      <p>Produit : <span id="product-name"></span></p>
+      <label for="client-name">Nom complet</label>
+      <input type="text" id="client-name" name="client-name" required />
+      <label for="client-email">Email</label>
+      <input type="email" id="client-email" name="client-email" required />
+      <label for="client-address">Adresse de livraison</label>
+      <textarea id="client-address" name="client-address" required></textarea>
+      <label for="payment-method">Mode de paiement</label>
+      <select id="payment-method" name="payment-method" required>
+        <option value="">Choisissez un moyen de paiement</option>
+        <option value="paypal">PayPal</option>
+        <option value="card">Carte bancaire</option>
+      </select>
+      <button type="submit">Valider la commande</button>
+      <button type="button" id="cancel-order">Annuler</button>
     </form>
-    <div id="message-commande" style="margin-top:10px; color:green;"></div>
-  </section>
-
-  <footer>
-    <p>© 2025 Imad Style - Tous droits réservés</p>
-  </footer>
+  </div>
 
   <script src="commande.js"></script>
 </body>
