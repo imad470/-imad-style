@@ -1,31 +1,25 @@
-/* style.css */
-
 body {
   font-family: Arial, sans-serif;
+  background: #fff;
+  color: #222;
   margin: 0;
-  padding: 0;
-  background-color: #fff;
-  color: #333;
+  padding: 0 10px;
 }
 
 header {
-  background-color: #E91E63;
+  background: #222;
   color: white;
-  padding: 15px;
+  padding: 15px 10px;
   text-align: center;
-}
-
-header h1 {
-  margin: 0;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 10px 0 0 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  margin: 10px 0;
 }
 
 nav ul li a {
@@ -35,69 +29,55 @@ nav ul li a {
 }
 
 section {
-  padding: 20px;
-  max-width: 960px;
-  margin: auto;
+  margin-bottom: 30px;
 }
 
 h2 {
-  color: #E91E63;
-  border-bottom: 2px solid #E91E63;
+  border-bottom: 2px solid #222;
   padding-bottom: 5px;
 }
 
 .product {
   border: 1px solid #ddd;
   padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-  max-width: 250px;
+  margin: 15px auto;
+  max-width: 300px;
   text-align: center;
-  display: inline-block;
-  vertical-align: top;
+  box-shadow: 0 0 8px #eee;
 }
 
 .product img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
 }
 
 .price {
-  color: #E91E63;
   font-weight: bold;
-  font-size: 16px;
-  margin: 10px 0;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .btn {
   display: inline-block;
-  background-color: #E91E63;
-  color: white;
+  background-color: #0070f3;
+  color: white !important;
   padding: 10px 20px;
-  text-decoration: none;
   border-radius: 5px;
+  text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005bb5;
 }
 
 footer {
   text-align: center;
-  padding: 15px;
-  background-color: #f4f4f4;
-  margin-top: 30px;
-  font-size: 14px;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
   color: #666;
-}
-
-/* Responsive mobile */
-@media (max-width: 600px) {
-  .product {
-    max-width: 100%;
-    display: block;
-    margin: 10px auto;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
+  font-size: 14px;
 }
