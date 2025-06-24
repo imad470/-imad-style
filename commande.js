@@ -1,27 +1,23 @@
-function ouvrirFormulaire(produitNom) {
-  document.getElementById("produit").value = produitNom;
-  document.getElementById("formulaire-commande").style.display = "block";
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const boutonsCommander = document.querySelectorAll('.commander-btn');
+  const formulaireCommande = document.getElementById('commande-formulaire');
 
-function fermerFormulaire() {
-  document.getElementById("formulaire-commande").style.display = "none";
-}
+  boutonsCommander.forEach((bouton) => {
+    bouton.addEventListener('click', () => {
+      formulaireCommande.style.display = 'block';
+      formulaireCommande.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-document.getElementById("commandeForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+  const formulaire = document.getElementById('formulaire');
+  formulaire.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nom = formulaire.elements[0].value;
+    const email = formulaire.elements[1].value;
+    const adresse = formulaire.elements[2].value;
 
-  const nom = document.getElementById("nom").value;
-  const email = document.getElementById("email").value;
-  const adresse = document.getElementById("adresse").value;
-  const produit = document.getElementById("produit").value;
-
-  alert(`Merci ${nom}, votre commande de "${produit}" sera envoyée à l'adresse : ${adresse}`);
-
-  // Réinitialise le formulaire
-  document.getElementById("commandeForm").reset();
-
-  // Ferme le formulaire après 3 secondes
-  setTimeout(() => {
-    fermerFormulaire();
-  }, 3000);
+    alert(`Merci ${nom}, votre commande sera envoyée à : ${adresse}`);
+    formulaireCommande.style.display = 'none';
+    formulaire.reset();
+  });
 });
