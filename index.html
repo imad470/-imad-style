@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Imad Style - Boutique en ligne</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="commande.js"></script>
 </head>
 <body>
   <header>
@@ -23,10 +22,17 @@
     <h2>Produits Homme</h2>
 
     <div class="product">
-      <h3>Ensemble Chemise + Pantalon</h3>
-      <img src="https://ae01.alicdn.com/kf/H260830bd9ac34e469fbbe3d09917c988t.jpg" alt="Ensemble Homme">
+      <h3>Ensemble Chemise + pantalon homme</h3>
+      <img src="https://ae01.alicdn.com/kf/H260830bd9ac34e469fbbe3d09917c988t.jpg" alt="Ensemble Chemise + pantalon homme" />
       <p class="price">Prix : 10 €</p>
-      <button class="btn commander-btn">Commander</button>
+      <button class="btn order-btn" data-product="Ensemble Chemise + pantalon homme" data-price="10">Commander</button>
+    </div>
+
+    <div class="product">
+      <h3>Costume velours côtelé décontracté</h3>
+      <img src="https://ae01.alicdn.com/kf/H94e0d331c824414091d2b0b60c5c29f6E.jpg" alt="Costume velours côtelé" />
+      <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn" data-product="Costume velours côtelé décontracté" data-price="10">Commander</button>
     </div>
   </section>
 
@@ -34,10 +40,17 @@
     <h2>Produits Femme</h2>
 
     <div class="product">
-      <h3>Robe de soirée élégante</h3>
-      <img src="https://ae01.alicdn.com/kf/Ha580cc76d0224fbc9b953a5a156fedb4P.jpg" alt="Robe femme">
+      <h3>Mia Muse – Robe de soirée élégante</h3>
+      <img src="https://ae01.alicdn.com/kf/Ha580cc76d0224fbc9b953a5a156fedb4P.jpg" alt="Robe de soirée Mia Muse" />
       <p class="price">Prix : 10 €</p>
-      <button class="btn commander-btn">Commander</button>
+      <button class="btn order-btn" data-product="Mia Muse – Robe de soirée élégante" data-price="10">Commander</button>
+    </div>
+
+    <div class="product">
+      <h3>FITTOO – Robe à bretelles minceur</h3>
+      <img src="https://ae01.alicdn.com/kf/H0733ffba51564b228138a44d0dd9c519J.jpg" alt="Robe FITTOO minceur" />
+      <p class="price">Prix : 10 €</p>
+      <button class="btn order-btn" data-product="FITTOO – Robe à bretelles minceur" data-price="10">Commander</button>
     </div>
   </section>
 
@@ -45,26 +58,27 @@
     <h2>Accessoires</h2>
 
     <div class="product">
-      <h3>Outil de retrait de cire d’oreille</h3>
-      <img src="https://ae01.alicdn.com/kf/Hd0e52a8e524941fc998b343bc39a01dcN.jpg" alt="Outil oreille">
+      <h3>Outil de retrait de cire d'oreille visuel intelligent</h3>
+      <img src="https://ae01.alicdn.com/kf/Hd0e52a8e524941fc998b343bc39a01dcN.jpg" alt="Outil de retrait de cire d'oreille" />
       <p class="price">Prix : 10 €</p>
-      <button class="btn commander-btn">Commander</button>
+      <button class="btn order-btn" data-product="Outil de retrait de cire d'oreille visuel intelligent" data-price="10">Commander</button>
     </div>
   </section>
-
-  <!-- Formulaire de commande caché -->
-  <div id="commande-formulaire">
-    <h2>Formulaire de commande</h2>
-    <form id="formulaire">
-      <input type="text" placeholder="Nom complet" required />
-      <input type="email" placeholder="Email" required />
-      <input type="text" placeholder="Adresse de livraison" required />
-      <button type="submit">Valider la commande</button>
-    </form>
-  </div>
 
   <footer>
     <p>© 2025 Imad Style - Tous droits réservés</p>
   </footer>
+
+  <script>
+    // Script simple pour ouvrir un formulaire de commande (modal)
+    document.querySelectorAll('.order-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const product = button.getAttribute('data-product');
+        const price = button.getAttribute('data-price');
+        alert(`Commande pour : ${product}\nPrix : ${price} €\n\nVous serez contacté pour finaliser votre commande.`);
+        // Ici tu peux intégrer un vrai formulaire ou une redirection vers un système de paiement.
+      });
+    });
+  </script>
 </body>
 </html>
