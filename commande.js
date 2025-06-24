@@ -1,29 +1,49 @@
-// commande.js - gestion formulaire commande simple et validation
+// Ouvre le formulaire avec les infos du produit
+function ouvrirFormulaireCommande(nomProduit, prixProduit) {
+  const container = document.getElementById('order-form-container');
+  container.classList.remove('hidden');
+  document.getElementById('product-name').value = nomProduit;
+  document.getElementById('product-price').value = prixProduit;
+}
+
+// Ferme le formulaire
+function fermerFormulaireCommande() {
+  const container = document.getElementById('order-form-container');
+  container.classList.add('hidden');
+}
+
+// Valide et traite la commande
+function validerCommande(event) {
+  event.preventDefault();
+  
+  const nom = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const adresse = document.getElementById('address').value.trim();
+  const produit = document.getElementById('product-name').value;
+  const prix = document.getElementById('product-price').value;
+
+  if (!nom || !email || !adresse) {
+    alert('Veuillez remplir tous les champs.');
+    return;
+  }
+  
+  // Ici, tu peux appeler une API de paiement, ou envoyer les données à un serveur
+  alert(`Merci pour votre commande de ${produit} à ${prix}. Nous vous contacterons bientôt.`);
+  
+  fermerFormulaireCommande();
+  document.getElementById('order-form').reset();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('form-commande');
-  const message = document.getElementById('message');
+  document.getElementById('order-form').addEventListener('submit', validerCommande);
+  document.getElementById('cancel-order').addEventListener('click', fermerFormulaireCommande);
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Récupérer les données du formulaire
-    const nom = form.elements['nom'].value.trim();
-    const email = form.elements['email'].value.trim();
-    const produit = form.elements['produit'].value.trim();
-    const quantite = parseInt(form.elements['quantite'].value.trim(), 10);
-
-    // Validation simple
-    if (!nom || !email || !produit || isNaN(quantite) || quantite < 1) {
-      message.textContent = "Merci de remplir tous les champs correctement.";
-      message.style.color = 'red';
-      return;
-    }
-
-    // Ici tu peux ajouter la logique d'envoi vers Stripe/PayPal ou un serveur
-
-    message.textContent = `Merci ${nom}, votre commande de ${quantite} ${produit}(s) a bien été prise en compte.`;
-    message.style.color = 'green';
-    form.reset();
+  document.querySelectorAll('.btn-commander').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const produit = button.getAttribute('data-produit');
+      const prix = button.getAttribute('data-prix');
+      ouvrirFormulaireCommande(produit, prix);
+    });
   });
 });
